@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -32,7 +32,7 @@
 
     .rect{
         width:100%;
-        height:55vh;
+        height:50vh;
     }
     #green{
         background-color:#559065;
@@ -70,6 +70,7 @@
     /*search box css start here*/
     .search-sec{
         padding: 2rem;
+        margin-bottom: 20px;
     }
     .search-slt{
         display: block;
@@ -94,12 +95,27 @@
     @media (min-width: 992px){
         .search-sec{
             position: relative;
-            top: -140px;
+            top: -113px;
             background: rgba(26, 70, 104, 0.51);
         }
-        .logo img {
-            width: 100%;
+        
+    }
+
+    @media screen and (max-width: 600px) {
+        .rect{
+            width:100%;
+            height:45vh;
         }
+
+        .logo img {
+            width: 300px;
+        }
+
+        .logo {
+            text-align: center;
+            margin: 20px 0 20px;
+        }
+
     }
 
     @media (max-width: 992px){
@@ -107,9 +123,6 @@
             background: #1A4668;
         }
 
-        .logo img {
-            width: 100%;
-        }
     }
 
     .content-box {
@@ -151,7 +164,7 @@
 
     .logo {
         text-align: center;
-        margin: 50px 0 20px;
+        margin: 25px 0 20px;
     }
 
     .wide-intro span {
@@ -159,8 +172,13 @@
         font-size: 20px;
         font-weight: 600;
     }
+    
+    .wide-intro span a {
+        text-decoration: none;
+        color: #ffffff;
+    }
     .logo img {
-        width: 35%;
+        width: 350px;
     }
 </style>
 <script>
@@ -205,7 +223,7 @@ $(document).ready(function() {
                     <div class="row">
                         <div class="col-sm-12 wide-intro">
                             <div class="logo">
-                                <img src="{{ asset('images/lo.png') }}" alt="">
+                                <a href="/"><img src="{{ asset('images/lo.png') }}" alt="routes.lk" /></a>
                             </div>
                             
                             <h1>Srilanka's No.1 Classified Search Engine</h1>
@@ -215,7 +233,7 @@ $(document).ready(function() {
                                     <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
                                     <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
                                 </ul> --}}
-                                <span>Home | </span><span>Add Listing | </span> <span>About Us | </span> <span>Contact Us  </span>
+                                <span><a href="/">Home | </a></span><span>Add Listing | </span> <span>About Us | </span> <span>Contact Us  </span>
                             </div>
                         </div>
                     </div>
@@ -224,7 +242,7 @@ $(document).ready(function() {
             </div>
             
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
