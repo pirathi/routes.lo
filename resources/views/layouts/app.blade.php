@@ -97,11 +97,18 @@
             top: -140px;
             background: rgba(26, 70, 104, 0.51);
         }
+        .logo img {
+            width: 100%;
+        }
     }
 
     @media (max-width: 992px){
         .search-sec{
             background: #1A4668;
+        }
+
+        .logo img {
+            width: 100%;
         }
     }
 
