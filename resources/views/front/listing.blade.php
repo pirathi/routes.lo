@@ -1,8 +1,29 @@
 @extends('layouts.app')
 {{-- {{ uc$district->districts_name }}--}}
 @section('content')
-<?php  $dist = request()->segment(1);  ?>
-{{-- {{ $lists  }} --}}
+<?php  $dist = request()->segment(1);  $cat = request()->segment(2); ?>
+{{-- {{ $cat  }} --}}
+<section class="search-sec">
+    <div class="container">
+       {!! Form::open(['method' => 'post', 'class' => 'form', 'action' => 'Front\SearchController@index']) !!}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-sm-12 p-0">
+                            {!! Form::text('category', ucfirst($cat), ['class' => 'form-control search-slt']) !!}
+                        </div>
+                        <div class="col-lg-5 col-md-4 col-sm-12 p-0">
+                            {!! Form::text('city', null, ['class' => 'form-control search-slt', 'placeholder'=>'Type your City in '.ucfirst($dist).'...?']) !!}
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-12 p-0">
+                            {{ Form::button('serach', ['type' => 'submit', 'class' => 'btn btn-primary wrn-btn']) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {!! Form::close() !!}
+    </div>
+</section>
     <div class="container">
         <div class="row">
             @foreach ($lists as $list)

@@ -19,6 +19,7 @@ class SearchController extends Controller
         $dis_id = $request->district;
         $area = $request->city;
         $dist = $request->districthid;
+        $cate = $request->category;
 
         $dis_name = DB::table('districts')
                     ->where('id',$dis_id)
@@ -44,6 +45,13 @@ class SearchController extends Controller
             $q->where('name', 'like', "%$wrd%")
                 ->where('district', $dis_name);
         }
+
+        if (!empty($cate) && !empty($area)) {
+            $q->where('category', $cate)
+                ->where('area','like', "%$area%");
+        }
+
+
             
 
         $listings = $q->orderby('id', 'asc')->get();
