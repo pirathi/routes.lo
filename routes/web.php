@@ -33,3 +33,6 @@ Route::get('/', 'Front\FrontController@index');
 Route::get('/{district}', 'Front\FrontController@category')->name('category');
 Route::get('/{district}/{category}', 'Front\FrontController@getListing')->name('list');
 Route::post('/search', 'Front\SearchController@index');
+// Route::post('/search/{district}', 'Front\SearchController@index')->name('homesearch');
+// Route::post('/search/{district}', 'Front\SearchController@index')->name('catsearch');
+

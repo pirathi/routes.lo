@@ -17,6 +17,7 @@ class FrontController extends Controller
 
     public function index()
     {
+        
         $districts = District::all();
         $districts_drop = District::pluck('districts_name', 'id');
         return view('front.home',compact('districts', 'districts_drop'));

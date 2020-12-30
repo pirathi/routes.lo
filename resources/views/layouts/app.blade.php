@@ -13,7 +13,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     <script href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js" ></script>
-    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    {{-- <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> --}}
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>  --}}
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -180,6 +185,9 @@
     .logo img {
         width: 350px;
     }
+    .error{
+    color: red;
+  }
 </style>
 <script>
 $(document).ready(function() {
@@ -246,6 +254,7 @@ $(document).ready(function() {
             @yield('content')
         </main>
     </div>
+    @stack('script')
 </body>
 
 

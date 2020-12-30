@@ -31,15 +31,17 @@
                     </div>
                 </div>
             </form> --}}
-            {!! Form::open(['method' => 'post', 'class' => 'form', 'action' => 'Front\SearchController@index']) !!}
+            {!! Form::open(['method' => 'post', 'id' => 'h_searchfrm', 'class' => 'form', 'name' => 'h_search',  'onsubmit' => "return validateForm()", 'action' => 'Front\SearchController@index']) !!}
                 <div class="row">
                     <div class="col-lg-12">
+                        <div id="error0"></div>
                         <div class="row">
                             <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                                {!! Form::text('search_word', null, ['class' => 'form-control search-slt', 'placeholder'=>'What...?',]) !!}
+                                {!! Form::text('h_search_word', null, ['class' => 'form-control search-slt', 'id' => 'h_search_word', 'placeholder'=>'What...?']) !!}
+                                <div><span id="error-name"></span></div>
                             </div>
                             <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                                {!! Form::select('district', $districts_drop, null, ['class' => 'form-control search-slt',  'id' => 'district', 'placeholder'=>'Select district']) !!}
+                                {!! Form::select('h_district', $districts_drop, null, ['class' => 'form-control search-slt',  'id' => 'district', 'placeholder'=>'Select district']) !!}
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-12 p-0">
                                 {{ Form::button('serach', ['type' => 'submit', 'class' => 'btn btn-primary wrn-btn']) }}
@@ -69,4 +71,74 @@
         </div>
     </section>
     
+    {{-- <script>
+        function validateForm(){
+            var wrd = document.forms["h_search"]["h_search_word"].value;
+            var district = document.forms["h_search"]["district"].value;
+            
+        
+            if (wrd.length<1) {
+                $('#errors0').text('*Please enter a username*');
+            }
+            if (district.length<1) {
+                document.getElementById('error-email').innerHTML = " Please Enter Your Email *";
+            }
+                
+            if(wrd.length<1 || district.length<1){
+                   return false;
+            }            
+        }
+
+        $(function() {
+            $('form[name="h_search"]').submit(function(e) {
+                var username = $('form[name="h_search"] input[name="h_search_word"]').val();
+                if ( username == '') {
+                    e.preventDefault();
+                    $('#errors').text('*Please enter a username*');
+                }
+            });
+        });
+        </script> --}}
+@push('test-push')
+    
+
+<script>
+    // $(document).ready(function(){
+    //   $("#h_searchfrm").validate({
+    //     // Specify validation rules
+    //     rules: {
+    //         h_search_word: {
+    //             required: true
+    //         },
+    //         district: {
+    //             required: true
+    //         }
+    //     },
+    //     messages: {},
+    //     errorElement : 'div',
+      
+    //   });
+    // });
+//     $(document).ready(function(){
+//   $("#h_searchfrm").validate({
+//     // Specify validation rules
+//     rules: {
+//         h_search_word: "required",
+//         district: "required",
+     
+//     },
+//     messages: {
+//         h_search_word: {
+//       required: "Please enter first name",
+//      },      
+//      district: {
+//       required: "Please enter last name",
+//      },     
+     
+//     },
+  
+//   });
+// });
+    </script>
+  @endpush        
 @endsection

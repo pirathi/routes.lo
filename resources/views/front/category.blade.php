@@ -11,10 +11,10 @@
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                                    {!! Form::text('search_word', null, ['class' => 'form-control search-slt', 'placeholder'=>'What...?','required' => 'required']) !!}
+                                    {!! Form::text('c_search_word', null, ['class' => 'form-control search-slt', 'placeholder'=>'What...?','required' => 'required']) !!}
                                 </div>
                                 <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                                    {!! Form::text('city', null, ['class' => 'form-control search-slt', 'placeholder'=>'Type your City in '.ucfirst($dist).'...?']) !!}
+                                    {!! Form::text('c_city', null, ['class' => 'form-control search-slt', 'placeholder'=>'Type your City in '.ucfirst($dist).'...?']) !!}
                                 </div>
                                 <div class="col-lg-2 col-md-4 col-sm-12 p-0">
                                     {{ Form::button('serach', ['type' => 'submit', 'class' => 'btn btn-primary wrn-btn']) }}
