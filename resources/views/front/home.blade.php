@@ -31,17 +31,17 @@
                     </div>
                 </div>
             </form> --}}
-            {!! Form::open(['method' => 'post', 'id' => 'h_searchfrm', 'class' => 'form', 'name' => 'h_search',  'onsubmit' => "return validateForm()", 'action' => 'Front\SearchController@index']) !!}
+            {!! Form::open(['route' =>'homesearch' ,'class' => 'form-horizontal','method'=>'post','files'=>true]) !!}
                 <div class="row">
                     <div class="col-lg-12">
                         <div id="error0"></div>
                         <div class="row">
                             <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                                {!! Form::text('h_search_word', null, ['class' => 'form-control search-slt', 'id' => 'h_search_word', 'placeholder'=>'What...?']) !!}
+                                {!! Form::text('h_search_word', null, ['class' => 'form-control search-slt', 'id' => 'h_search_word', 'placeholder'=>'What...?', 'required' => 'required']) !!}
                                 <div><span id="error-name"></span></div>
                             </div>
                             <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                                {!! Form::select('h_district', $districts_drop, null, ['class' => 'form-control search-slt',  'id' => 'district', 'placeholder'=>'Select district']) !!}
+                                {!! Form::select('h_district', $districts_drop, null, ['class' => 'form-control search-slt',  'id' => 'district', 'placeholder'=>'Select district', 'required' => 'required']) !!}
                             </div>
                             <div class="col-lg-2 col-md-4 col-sm-12 p-0">
                                 {{ Form::button('serach', ['type' => 'submit', 'class' => 'btn btn-primary wrn-btn']) }}

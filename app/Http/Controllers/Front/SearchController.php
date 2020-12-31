@@ -9,9 +9,81 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Listing;
 use App\Models\District;
+use App\Models\Category;
 
 class SearchController extends Controller
 {
+    public function homesearchres($district, $key)
+    {
+        $c = Category::select('category_name')
+                ->where('category_name', $key)
+                ->exists();
+        $q = Listing::query();
+
+        if ($c) {
+            if (!empty($district)) {
+                $q->where('district', $district)
+                ->where('category', $key);
+            }
+            
+        }
+        else {
+            if (!empty($district) && !empty($key)) {
+                $q->where('district', $district)
+                ->where('name', 'like', "%$key%");
+            }
+        }
+        $listings = $q->orderby('id', 'asc')->get();
+        // return $distrct.$kkk;
+        return view('front.search', compact('listings'));
+    }
+
+    public function catsearchres($dist, $area, $ke)
+    {
+        $q = Listing::query();
+        $check = Category::select('category_name')
+                ->where('category_name', $ke)
+                ->exists();
+        if ($check) {
+            $q->where('district', $dist)
+                ->where('area', $area)
+                ->where('category',  'like', "%$ke%");
+        }
+        else {
+            $q->where('district', $dist)
+                ->where('area', $area)
+                ->where('name', 'like', "%$ke%");
+        }
+               
+        $listings = $q->orderby('id', 'asc')->get();
+        return view('front.search', compact('listings'));
+    }
+
+    public function homesearch(Request $request)
+    {
+        $district = District::whereId($request->h_district)->first();
+        if ($request->has('h_district') || $request->has('h_district')) {
+            // return $district->districts_name;
+            return redirect()->route('homesearchres',[$district->districts_name, $request->h_search_word]);
+        }
+
+        if ($request->has('c_city') || $request->has('c_search_word')) {
+            // return $request->c_city;
+            return redirect()->route('catsearchres',[$request->districthid,$request->c_city, $request->c_search_word]);
+        }
+
+        if ($request->has('l_category') || $request->has('l_city') || $request->has('l_search')) {
+            if ($request->has('l_category')) {
+                return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
+            }
+
+           
+            return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
+        }
+        // return $key;
+        
+    }
+
     public function index(Request $request)
     {
         $q = Listing::query();

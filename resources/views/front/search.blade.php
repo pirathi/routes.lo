@@ -1,11 +1,11 @@
 @extends('layouts.app')
 {{-- {{ uc$district->districts_name }}--}}
 @section('content')
-<?php  $dist = request()->segment(1);   $cat = request()->segment(2); ?>
+<?php  $dist = request()->segment(2);   $cat = request()->segment(3); ?>
 
 <section class="search-sec">
     <div class="container">
-       {!! Form::open(['method' => 'post', 'class' => 'form', 'action' => 'Front\SearchController@index']) !!}
+       {!! Form::open(['method' => 'post', 'class' => 'form']) !!}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">

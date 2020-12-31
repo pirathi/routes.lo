@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['method' => 'post', 'class' => 'form', 'action' => 'Front\SearchController@index']) !!}
+                {!! Form::open(['route' =>'homesearch', 'method' => 'post', 'class' => 'form',]) !!}
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
