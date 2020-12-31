@@ -73,13 +73,14 @@ class SearchController extends Controller
         }
 
         if ($request->has('l_category') || $request->has('l_city') || $request->has('l_search')) {
-            if ($request->has('l_category')) {
-                return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
-            }
-
-           
             return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
         }
+
+        if ($request->has('s_city') || $request->has('s_searchkey')) {
+            // return $request->s_city;
+            return redirect()->route('catsearchres',[$request->districthid,$request->s_city, $request->s_searchkey]);
+        }
+            // return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
         // return $key;
         
     }

@@ -25,10 +25,10 @@ Route::resource('/post', 'Admin\PostController');
 Route::resource('/category', 'Admin\CategoryController');
 Route::resource('/setting', 'Admin\SettingController');
 
-Route::post('getcategory', 'Admin\PostController@getcategory')->name('getcategory');
+Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
 
-
-
+Route::post('getcate', 'Front\PostController@getcategory')->name('front.getcate');
+Route::resource('/add_listing', 'Front\PostController');
 Route::get('/', 'Front\FrontController@index');
 Route::get('/{district}', 'Front\FrontController@category')->name('category');
 Route::get('/{district}/{category}', 'Front\FrontController@getListing')->name('list');

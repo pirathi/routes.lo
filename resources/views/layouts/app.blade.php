@@ -241,7 +241,7 @@ $(document).ready(function() {
                                     <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
                                     <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
                                 </ul> --}}
-                                <span><a href="/">Home | </a></span><span>Add Listing | </span> <span>About Us | </span> <span>Contact Us  </span>
+                                <span><a href="/">Home | </a></span><span><a href="{{ route('add_listing.create') }}">Add Listing</a>  | </span> <span>About Us | </span> <span>Contact Us  </span>
                             </div>
                         </div>
                     </div>
