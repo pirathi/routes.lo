@@ -27,11 +27,11 @@ class PostController extends Controller
     }
     public function index()
     {
-
-        $districts = District::all();
-        $posts = Listing::orderBy('id', 'DESC')->get();
-
-        return view('front.post', compact('districts','posts'));
+        return view('front.home');
+//         $districts = District::all();
+//         $posts = Listing::orderBy('id', 'DESC')->get();
+// return 'dfsd';
+        // return view('front.post', compact('districts','posts'));
     }
 
     /**
@@ -79,7 +79,7 @@ class PostController extends Controller
         $slug = str_replace(' ', '-', $request->name).'-'.strtolower($request->area);
         $post->slug = $slug;
         $post->save();
-        return redirect('/add_listing');
+        return redirect('/');
 
     }
 

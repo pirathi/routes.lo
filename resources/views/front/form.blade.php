@@ -9,7 +9,7 @@
 <div class="form-group row">
     {!! Form::label('district', 'District', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     <div class="col-md-6">
-        {!! Form::select('district', $districts, null, ['class' => 'form-control', 'required' => 'required',  'id' => 'district', 'placeholder'=>'Select district']) !!}
+        {!! Form::select('district', $districts, null, ['class' => 'form-control', 'required' => 'required',  'id' => 'districti', 'placeholder'=>'Select district']) !!}
     </div>
 </div>
 <div class="form-group row">
@@ -89,17 +89,12 @@
 <!--  -->
 @push('script')
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        alert("Settings page was loaded");
-    });
-</script>
+{{-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> --}}
+
 <script type="text/javascript">
     
-    $('#district').on('change', function(e) {
+    $(document).on('change','#districti',function(e) {
         console.log(e);
-        alert('sfsdf');
         var dis_id = $(this).val();
         var _token = "{{ csrf_token() }}";
         $.ajax({

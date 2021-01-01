@@ -254,6 +254,7 @@ $(document).ready(function() {
             @yield('content')
         </main>
     </div>
+    
     @stack('script')
 </body>
 
