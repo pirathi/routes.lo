@@ -38,6 +38,7 @@
                 </div>
             </div>
             @foreach ($categories as $categorie)
+                
                 <div class="col-sm-3 cat_list">
                     <a href="{{ route('list', [$dist, $categorie->category_name]) }} "><i class="{{ $categorie->icon_class }}"></i> 
                         <h6>{{ ucfirst($categorie->category_name) }}</h6></a>

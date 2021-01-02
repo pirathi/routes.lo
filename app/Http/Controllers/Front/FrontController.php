@@ -41,12 +41,12 @@ class FrontController extends Controller
 
     public function getListing($district, $category)
     {
-        return $district.$category;
+        // return $district.$category;
         $lists =DB::table('listings')
             ->orderby('id', 'asc')
             ->where('district', $district)
             ->where('category', $category)
-            ->where('reviewed', 1)
+            ->where('reviewed', 0)
             ->paginate(15);
         return view('front.listing', compact('lists'));
     }

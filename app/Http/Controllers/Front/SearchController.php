@@ -33,7 +33,7 @@ class SearchController extends Controller
                 ->where('name', 'like', "%$key%");
             }
         }
-        $listings = $q->orderby('id', 'asc')->get();
+        $listings = $q->orderby('id', 'asc')->paginate(15);
         // return $distrct.$kkk;
         return view('front.search', compact('listings'));
     }
@@ -55,7 +55,7 @@ class SearchController extends Controller
                 ->where('name', 'like', "%$ke%");
         }
                
-        $listings = $q->orderby('id', 'asc')->get();
+        $listings = $q->orderby('id', 'asc')->paginate(15);
         return view('front.search', compact('listings'));
     }
 
@@ -159,7 +159,7 @@ class SearchController extends Controller
 
             
 
-        $listings = $q->orderby('id', 'asc')->get();
+        $listings = $q->orderby('id', 'asc')->paginate(15);
         //return $listings ;->paginate(5);
         // return back()->with('error', 'ddd.');
          return view('front.search', compact('listings'));

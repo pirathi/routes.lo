@@ -11,4 +11,10 @@ class Category extends Model
         'slug',
         'icon_class'
     ];
+
+    public function category()
+    {
+        return $this->hasOne('App\Category', 'id');
+    }
+
 }
