@@ -46,9 +46,44 @@ class FrontController extends Controller
             ->orderby('id', 'asc')
             ->where('district', $district)
             ->where('category', $category)
-            ->where('reviewed', 0)
+            ->where('reviewed', 1)
             ->paginate(15);
         return view('front.listing', compact('lists'));
     }
     
+    public function listDescription()
+    {
+        return 'sfsdfsd';
+    }
+    public function getdata()
+    {
+        return view('front.data');
+    }
+    public function savedata(Request $requests)
+    { 
+        // return \Response::json($requests->all());
+        $post = new Listing();
+        foreach($requests as $request) {
+           return \Response::json($request);
+        $post->category = 'atm';
+        $post->district = 'jaffna';
+        $post->area = $request->areas;
+        $post->name = $request->names;
+        }
+        
+        // $post->description = '';
+        // $post->address = $request->address;
+        // $post->phone = $request->phones;
+        // $post->email = $request->emails;
+        // $post->website = $request->webs;
+        // $post->reviewed = 1;
+        // // $post->lon = $request->lon;
+        // // $post->lat = $request->lat;
+        // $post->tags = $request->tags;
+
+        $slug = str_replace(' ', '-', $request->names).'-'.strtolower($request->areas);
+        $post->slug = $slug;
+        $post->save();
+        // return view('front.data');
+    }
 }

@@ -61,17 +61,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
+        $category = Category::find($request->category);
+        $district = District::find($request->district);
+        $area = Area::find($request->area);
         $post = new Listing();
-        $post->category = $request->category;
-        $post->district = $request->district;
-        $post->area = $request->area;
+        $post->category = $category->category_name;
+        $post->district = $district->districts_name;
+        $post->area = $area->area_name;
         $post->name = $request->name;
         $post->description = $request->description;
         $post->address = $request->address;
         $post->phone = $request->phone;
         $post->email = $request->email;
         $post->website = $request->website;
+        $post->reviewed = 0;
         // $post->lon = $request->lon;
         // $post->lat = $request->lat;
         $post->tags = $request->tags;

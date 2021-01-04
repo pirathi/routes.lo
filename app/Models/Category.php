@@ -12,9 +12,10 @@ class Category extends Model
         'icon_class'
     ];
 
-    public function category()
-    {
-        return $this->hasOne('App\Category', 'id');
-    }
+    // public function posts()
+	// {
+	// 	return $this->hasOne(Post::class, 'id');
+	// }
+	
 
 }

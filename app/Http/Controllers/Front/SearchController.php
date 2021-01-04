@@ -38,24 +38,24 @@ class SearchController extends Controller
         return view('front.search', compact('listings'));
     }
 
-    public function catsearchres($dist, $area, $ke)
+    public function catsearchres($district, $area, $ke)
     {
         $q = Listing::query();
         $check = Category::select('category_name')
                 ->where('category_name', $ke)
                 ->exists();
         if ($check) {
-            $q->where('district', $dist)
+            $q->where('district', $district)
                 ->where('area', $area)
                 ->where('category',  'like', "%$ke%");
         }
         else {
-            $q->where('district', $dist)
+            $q->where('district', $district)
                 ->where('area', $area)
                 ->where('name', 'like', "%$ke%");
         }
                
-        $listings = $q->orderby('id', 'asc')->paginate(15);
+        $listings = $q->where('reviewed', 1)->orderby('id', 'asc')->paginate(15);
         return view('front.search', compact('listings'));
     }
 
