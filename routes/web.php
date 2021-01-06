@@ -16,6 +16,13 @@
 // });
 
 Auth::routes();
+Route::match(['get', 'post'], 'register', function(){
+    return redirect('/');
+});
+Route::match(['get', 'post'], 'password/reset', function(){
+    return redirect('/');
+});
+
 Route::get('/getdata', 'Front\FrontController@getdata');
 Route::post('/savedata', 'Front\FrontController@savedata')->name('savedata');
 
