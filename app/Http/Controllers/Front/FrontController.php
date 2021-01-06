@@ -59,17 +59,62 @@ class FrontController extends Controller
     {
         return view('front.data');
     }
-    public function savedata(Request $requests)
+    public function savedata(Request $request)
     { 
         // return \Response::json($requests->all());
         $post = new Listing();
-        foreach($requests as $request) {
-           return \Response::json($request);
-        $post->category = 'atm';
-        $post->district = 'jaffna';
-        $post->area = $request->areas;
-        $post->name = $request->names;
+        $data = $request->all();
+        $namearr = $request->names;
+        foreach ($data as $key => $value) {
+            return $key;
+            $post->category = '$category->category_name';
+            $post->district = '$district->districts_name';
+            $post->area = '$area->area_name';
+            $post->name = $value->names;
+            $post->description = '$request->description';
+            $post->address = '$request->address';
+            $post->phone = '$request->phone';
+            $post->email = '$request->email';
+            $post->website = '$request->website';
+            $post->reviewed = 0;
+            $post->slug = '$slug';
+            $post->tags = '$request->tags';
+            $post->save();
         }
+        for($i = 0; $i<=count($request->names); $i++) {
+
+        $post->category = '$category->category_name';
+        $post->district = '$district->districts_name';
+        $post->area = '$area->area_name';
+        $post->name = $request->names[$i];
+        $post->description = '$request->description';
+        $post->address = '$request->address';
+        $post->phone = '$request->phone';
+        $post->email = '$request->email';
+        $post->website = '$request->website';
+        $post->reviewed = 0;
+        $post->slug = '$slug';
+        $post->tags = '$request->tags';
+        //    return count($request->all());
+        // $namearr[] = $request->names;
+        // return $namearr;
+        // $post->category = 'atm';
+        // $post->district = 'jaffna';
+    // $post->save();
+    // return 'sdfsd';
+    //         // return count($request);
+            // return \Response::json());
+            // $post->category = 'atm';
+            // $post->district = 'jaffna';
+        $post->save();
+        }
+        // foreach($requests as $request) {
+        //    return \Response::json($request);
+        // $post->category = 'atm';
+        // $post->district = 'jaffna';
+        // $post->area = $request->areas;
+        // $post->name = $request->names;
+        // }
         
         // $post->description = '';
         // $post->address = $request->address;
@@ -81,9 +126,12 @@ class FrontController extends Controller
         // // $post->lat = $request->lat;
         // $post->tags = $request->tags;
 
-        $slug = str_replace(' ', '-', $request->names).'-'.strtolower($request->areas);
-        $post->slug = $slug;
-        $post->save();
+        // $slug = str_replace(' ', '-', $request->names).'-'.strtolower($request->areas);
+        // $post->slug = $slug;
         // return view('front.data');
+    }
+    public function ajax()
+    {
+        return view('front.ajax');
     }
 }
