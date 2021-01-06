@@ -84,6 +84,7 @@ class FrontController extends Controller
         $slug = str_replace(' ', '-', $request->names).'-'.strtolower($request->areas);
         $post->slug = $slug;
         $post->save();
-        // return view('front.data');
+
+        return view('front.data');
     }
 }
