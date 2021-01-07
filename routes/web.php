@@ -14,6 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::post('/savedata', 'Front\FrontController@savedata')->name('savedata');
 
 Auth::routes();
 Route::match(['get', 'post'], 'register', function(){
@@ -32,7 +33,6 @@ Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcatego
 });
 
 Route::get('/getdata', 'Front\FrontController@getdata');
-Route::post('/savedata', 'Front\FrontController@savedata')->name('savedata');
 
 
 
