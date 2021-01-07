@@ -16,20 +16,33 @@
 // });
 
 Auth::routes();
+Route::match(['get', 'post'], 'register', function(){
+    return redirect('/');
+});
+Route::match(['get', 'post'], 'password/reset', function(){
+    return redirect('/');
+});
+Route::group(['middleware' => 'auth'], function () {
+Route::resource('/post', 'Admin\PostController');
+Route::resource('/category', 'Admin\CategoryController');
+Route::resource('/setting', 'Admin\SettingController');  
+Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin'); 
+Route::get('/dashboard', 'Admin\AdminController@dashboard');
+Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
+});
+
 Route::get('/getdata', 'Front\FrontController@getdata');
 Route::post('/savedata', 'Front\FrontController@savedata')->name('savedata');
 
-Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin');
-Route::get('/dashboard', 'Admin\AdminController@dashboard');
 
 
-Route::resource('/post', 'Admin\PostController');
-Route::resource('/category', 'Admin\CategoryController');
-Route::resource('/setting', 'Admin\SettingController');
+
+
+
 Route::resource('/add_listing', 'Front\PostController');
 
 
-Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
+
 
 Route::post('getcate', 'Front\PostController@getcategory')->name('front.getcate');
 Route::get('/', 'Front\FrontController@index');

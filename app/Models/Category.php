@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = [
-        'category_name',
-        'slug',
-        'icon_class'
-    ];
+    // protected $fillable = [
+    //     'category_name',
+    //     'slug',
+    //     'icon_class'
+    // ];
+    protected $guarded =[];
 
     // public function posts()
 	// {
