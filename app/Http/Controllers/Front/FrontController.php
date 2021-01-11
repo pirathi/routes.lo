@@ -99,9 +99,9 @@ class FrontController extends Controller
         return redirect()->route('details',[$district,$slug->slug]);
     }
 
-    public function details()
+    public function details($district, $category, $slug)
     {
-       return "fsdfs";
+       return $slug;
     }
    
     
