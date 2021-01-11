@@ -80,10 +80,35 @@ class PostController extends Controller
         $post->tags = $request->tags;
 
         $slug = str_replace(' ', '-', $request->name).'-'.strtolower($request->area);
+        // $slug_ex = Listing::where('slug', $slug)->get();
+        // $i=0;
+        // if(Listing::where('slug', $slug)->exists()) {
+        // while (Listing::where('slug', $slug)->exists()){
+        //         $post->slug = $slug.'-'.$i++;
+        //     }
+        // }
+        //     else {
+        //         $post->slug = $slug;
+        //     }
         $post->slug = $slug;
         $post->save();
         return redirect('/');
 
+    }
+
+    public function incrementSlug($slug) {
+
+        $original = $slug;
+    
+        $count = 2;
+    
+        while (static::whereSlug($slug)->exists()) {
+    
+            $slug = "{$original}-" . $count++;
+        }
+    
+        return $slug;
+    
     }
 
     /**

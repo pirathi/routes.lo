@@ -24,12 +24,12 @@ Route::match(['get', 'post'], 'password/reset', function(){
     return redirect('/');
 });
 Route::group(['middleware' => 'auth'], function () {
-Route::resource('/post', 'Admin\PostController');
-Route::resource('/category', 'Admin\CategoryController');
-Route::resource('/setting', 'Admin\SettingController');  
-Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin'); 
-Route::get('/dashboard', 'Admin\AdminController@dashboard');
-Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
+    Route::resource('/post', 'Admin\PostController');
+    Route::resource('/category', 'Admin\CategoryController');
+    Route::resource('/setting', 'Admin\SettingController');  
+    Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin'); 
+    Route::get('/dashboard', 'Admin\AdminController@dashboard');
+    Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
 });
 
 Route::get('/getdata', 'Front\FrontController@getdata');
