@@ -79,19 +79,16 @@ class FrontController extends Controller
     public function getListing($district, $category)
     {
        
-        // $districtid = District::where('districts_name', $district)->first();
-        // $disid = $districtid->id;
-        // $category_id = Category::where('category_name', $category)->first();
-        // $catid=$category_id->id;
-        // // return $catid;
-        // // return $category_id->id;
-        // // return $district.$category;
-        // $lists =Listing::orderby('id', 'asc')
-        //     ->where('district', $disid)
-        //     ->where('category',$catid)
-        //     ->where('reviewed', 1)
-        //     ->paginate(15);
-        //     // return $lists;
+        $districtid = District::where('districts_name', $district)->first();
+        
+        $category_id = Category::where('category_name', $category)->first();
+        
+        $lists =Listing::where('district', $districtid->id)
+            ->where('category', $category_id->id)
+            ->where('reviewed', 1)
+            ->orderby('id', 'asc')
+            ->paginate(15);
+            
         return view('front.listing', compact('lists'));
     }
     
