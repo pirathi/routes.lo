@@ -48,7 +48,8 @@ Route::post('getcate', 'Front\PostController@getcategory')->name('front.getcate'
 Route::get('/', 'Front\FrontController@index');
 Route::get('/{district}', 'Front\FrontController@category')->name('category');
 Route::get('/{district}/{category}', 'Front\FrontController@getListing')->name('list');
-Route::get('/listing/{district}/{category}/{slug}', 'Front\FrontController@listDescription')->name('description');
+Route::get('/listing/{district}/{category}/{slug}', 'Front\FrontController@details')->name('details');
+Route::get('/listing/{district}/{category}/{id}', 'Front\FrontController@listDescription')->name('description');
 // Route::post('/search', 'Front\SearchController@index');
 //http://routes.lo/serarch/district/searchresult
 Route::post('/search', 'Front\SearchController@homesearch')->name('homesearch');

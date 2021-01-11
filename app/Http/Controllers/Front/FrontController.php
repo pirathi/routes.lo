@@ -88,13 +88,20 @@ class FrontController extends Controller
             ->where('reviewed', 1)
             ->orderby('id', 'asc')
             ->paginate(15);
-            
+            //  return $lists;
         return view('front.listing', compact('lists'));
     }
     
-    public function listDescription()
+    public function listDescription($district, $category, $id)
     {
-        return 'sfsdfsd';
+        $slug = Listing::whereId($id)->first();
+        // return $slug->slug;
+        return redirect()->route('details',[$district,$slug->slug]);
+    }
+
+    public function details()
+    {
+       return "fsdfs";
     }
    
     
