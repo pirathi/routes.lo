@@ -29,7 +29,7 @@ class PostController extends Controller
     {
 
         $districts = District::all();
-        $posts = Listing::orderBy('id', 'DESC')->get();
+        $posts = Listing::paginate(20);
 
         return view('admin.post.post', compact('districts','posts'));
     }

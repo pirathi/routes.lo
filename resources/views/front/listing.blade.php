@@ -33,7 +33,8 @@
                     <div class="card list_card border-success">
                         <div class="card-header ">
                           {{ $list->name }}
-                          <span class="float-right">{{ $list->area }}</span>
+                          <?php $area = \App\Models\Area::find($list->area ); ?>
+                          <span class="float-right">{{ $area->area_name }}</span>
                         </div>
                         <div class="card-body">
                             {{-- <div class="float-right">
@@ -41,11 +42,10 @@
                             </div> --}}
                           <div><span class="fas fa-map-marker-alt"></span> <a href="{{ $list->address }}">{{ $list->address }}</a></div>
                           @if (!empty($list->phone) && ($list->phone != 'null'))
-                              <div><span class="fas fa-phone-square-alt"></span> <a href="tel:{{ $list->phone }}">{{ $list->phone }}</a></div>
+                               <div><span class="fas fa-phone-square-alt"></span> <?php echo preg_replace( '#([^,\s]+)#is', '<a href="tel:$1">$1</a>', $list->phone);  ?></div>
                           @endif
                           @if (!empty($list->email) && ($list->email != 'null'))
-                            
-                                <div><span class="fas fa-envelope"></span> {{ $list->email }}</div>
+                            <div><span class="fas fa-envelope"></span> {{ $list->email }}</div>
                           @endif
                           
                           @if (!empty($list->website) && ($list->website != 'null'))
@@ -55,7 +55,8 @@
                         </div>
                         <div class="card-footer bg-transparent border-success">
                             <a href=""><span class="fas fa-map-marked-alt"></span> Get Direction</a>
-                            <a href="{{ route('description', [$list->id]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>
+                            <a href="{{ route('description', [$dist, $cat, $list->slug]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>
+                            <input type="hidden" name="listid" value="{{ $list->id }}">
                         </div>
                       </div>
                 </div>

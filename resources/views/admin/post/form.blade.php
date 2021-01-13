@@ -15,10 +15,11 @@
 <div class="form-group row">
     {!! Form::label('area', 'Area', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     <div class="col-md-6">
-        <!-- {!! Form::select('area', $areas, null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Select area', 'id' => 'area']) !!} -->
+        {!! Form::select('area', $areas, null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'Select area', 'id' => 'area']) !!}
+        <!--  
         <select name="area" id="area" class="form-control input-sm">
             <option value="{{ old('area_name') }}">Choose Area</option>
-        </select>
+        </select>-->
     </div>
 </div>
 <div class="form-group row">
@@ -42,15 +43,15 @@
 {{-- {{ $post }} --}}
 @if(isset($post))
     <div class="form-group row">
-        {!! Form::label('lon', 'Longitude', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+        {!! Form::label('longitude', 'Longitude', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
         <div class="col-md-6">
-            {!! Form::text('lon', null, ['class' => 'form-control','required' => 'required']) !!}
+            {!! Form::text('longitude', null, ['class' => 'form-control','required' => 'required']) !!}
         </div>
     </div>
     <div class="form-group row">
-        {!! Form::label('lat', 'Latitude ', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+        {!! Form::label('latitude', 'Latitude ', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
         <div class="col-md-6">
-            {!! Form::text('lat', null, ['class' => 'form-control', 'required' => 'required']) !!}
+            {!! Form::text('latitude', null, ['class' => 'form-control', 'required' => 'required']) !!}
         </div>
     </div>
 @endif

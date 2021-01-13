@@ -96,7 +96,7 @@ class FrontController extends Controller
     {
         $slug = Listing::whereId($id)->first();
         // return $slug->slug;
-        return redirect()->route('details',[$district,$slug->slug]);
+        return redirect()->route('details',[$district,$category, $slug->slug]);
     }
 
     public function details($district, $category, $slug)
