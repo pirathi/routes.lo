@@ -99,7 +99,7 @@
         var _token = "{{ csrf_token() }}";
 
         $.ajax({
-            url: "{{ route('getcategory') }}",
+            url: "{{ route('getarea') }}",
             type: "POST",
             data: {dis_id:dis_id,_token:_token},
             success: function (res) {
@@ -113,25 +113,6 @@
             },
         });
         
-        // $.ajax('/admin/category?dis_id=' + dis_id, function(data){
-
-        //     //success data
-            // $('#area').empty();
-
-            // $('#area').append(' Please choose one');
-
-            // $.each(data, function(index, areaObj){
-
-            //     $('#area').append(''
-            //     + areaObj.area_name + '</option');
-
-
-            // });
-
-        //     console.log('sdfsdf');
-
-
-        // });
     });
 </script>
 @endpush

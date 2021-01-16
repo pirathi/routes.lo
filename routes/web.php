@@ -29,7 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/setting', 'Admin\SettingController');  
     Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin'); 
     Route::get('/dashboard', 'Admin\AdminController@dashboard');
-    Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
+    Route::post('/getarea', 'Admin\PostController@getarea')->name('getarea');
+    Route::post('/getcategory', 'Admin\PostController@categoryfilter')->name('getcategory');
 });
 
 Route::get('/getdata', 'Front\FrontController@getdata');

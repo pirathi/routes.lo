@@ -11,7 +11,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <a href="{{ route('post.create') }}" class="btn btn-primary mt-3">Create</a>
-                <table class="table table-bordered table-striped mt-5" style="width: 100%;border:1px solid #ccc">
+                <div class="mt-3">
+                    {{-- {!! Form::text('category', null, ['class' => 'form-control', 'required' => 'required']) !!} --}}
+                    {{ Form::select('category', $categories, null, ['class'=>'form-control col-md-4 ','id'=>'category', 'placeholder'=>'Select category','required' => 'required']) }}
+            
+                </div>
+                <table id='result' class="table table-bordered table-striped mt-5" style="width: 100%;border:1px solid #ccc">
                     <thead>
                         <th>Name</th>
                         <th>Category</th>
@@ -43,4 +48,37 @@
             </div>
         </div>
     </div>
+    @push('script')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+    
+    <script type="text/javascript">
+        
+        $('#category').on('change', function(e) {
+            var cat_id = $(this).val();
+            var _token = "{{ csrf_token() }}";
+            // alert(cat_id)
+    
+            $.ajax({
+                url: "{{ route('getcategory') }}",
+                type: "POST",
+                data: {cat_id:cat_id,_token:_token},
+                success: function (res) {
+                    console.log(res);
+                    $('#result').remove();
+                    $.each(res,function(key, value) {
+                     $('#result').html(res);
+
+                    });
+    
+                    // $.each(res,function(key, value)
+                    // {
+                    //     $("#area").append('<option value=' + value.id + '>' + value.area_name + '</option>');
+                    // });
+                },
+            });
+            
+        });
+    </script>
+    @endpush
 @endsection
