@@ -16,8 +16,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getcategory(Request $request){
+    public function getarea(Request $request){
         $dis_id = $request->dis_id;
+
 
         $areas = Area::where('district_id', '=', $dis_id)
                   ->orderBy('area_name', 'asc')
@@ -25,13 +26,25 @@ class PostController extends Controller
 
         return \Response::json($areas);
     }
+
+    public function categoryfilter($id){
+        // return $id;
+        
+        $posts = Listing::where('category',$id)->paginate(20);
+        $categories = Category::all();
+
+        return view('admin.post.post', compact('posts','categories'));
+    }
     public function index()
     {
 
         $districts = District::all();
-        $posts = Listing::orderBy('id', 'DESC')->get();
+        $posts = Listing::paginate(20);
+        
+        $categories = Category::all();
+        //Category::pluck('category_name', 'id');
 
-        return view('admin.post.post', compact('districts','posts'));
+        return view('admin.post.post', compact('districts','posts','categories'));
     }
 
     /**
@@ -46,6 +59,7 @@ class PostController extends Controller
         $areas = Area::where('district_id', '=', $dis_id)
                   ->orderBy('area_name', 'asc')
                   ->get();
+                  
 
         $districts = District::pluck('districts_name', 'id');
         // $areas = Area::pluck('area_name', 'id');

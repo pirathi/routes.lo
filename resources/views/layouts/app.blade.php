@@ -37,7 +37,7 @@
 
     .rect{
         width:100%;
-        height:50vh;
+        height:60vh;
     }
     #green{
         background-color:#559065;
@@ -107,10 +107,10 @@
     }
 
     @media screen and (max-width: 600px) {
-        .rect{
+        /* .rect{
             width:100%;
             height:45vh;
-        }
+        } */
 
         .logo img {
             width: 300px;
@@ -231,7 +231,7 @@ $(document).ready(function() {
                     <div class="row">
                         <div class="col-sm-12 wide-intro">
                             <div class="logo">
-                                <a href="/"><img src="{{ asset('images/lo.png') }}" alt="routes.lk" /></a>
+                                <a href="/"><img src="{{ asset('images/logo.png') }}" alt="routes.lk" /></a>
                             </div>
                             
                             <h1>Srilanka's No.1 Classified Search Engine</h1>

@@ -14,28 +14,43 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-Auth::routes();
-Route::get('/getdata', 'Front\FrontController@getdata');
 Route::post('/savedata', 'Front\FrontController@savedata')->name('savedata');
 
-Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin');
-Route::get('/dashboard', 'Admin\AdminController@dashboard');
+Auth::routes();
+Route::match(['get', 'post'], 'register', function(){
+    return redirect('/');
+});
+Route::match(['get', 'post'], 'password/reset', function(){
+    return redirect('/');
+});
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('/post', 'Admin\PostController');
+    Route::resource('/category', 'Admin\CategoryController');
+    Route::resource('/setting', 'Admin\SettingController');  
+    Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin'); 
+    Route::get('/dashboard', 'Admin\AdminController@dashboard');
+    Route::post('/getarea', 'Admin\PostController@getarea')->name('getarea');
+    Route::get('/category/{category}', 'Admin\PostController@categoryfilter')->name('categoryfilter');
+});
+
+Route::get('/getdata', 'Front\FrontController@getdata');
 
 
-Route::resource('/post', 'Admin\PostController');
-Route::resource('/category', 'Admin\CategoryController');
-Route::resource('/setting', 'Admin\SettingController');
+
+
+
+
 Route::resource('/add_listing', 'Front\PostController');
 
 
-Route::post('/getcategory', 'Admin\PostController@getcategory')->name('getcategory');
+
 
 Route::post('getcate', 'Front\PostController@getcategory')->name('front.getcate');
 Route::get('/', 'Front\FrontController@index');
 Route::get('/{district}', 'Front\FrontController@category')->name('category');
 Route::get('/{district}/{category}', 'Front\FrontController@getListing')->name('list');
-Route::get('/listing/{district}/{category}/{slug}', 'Front\FrontController@listDescription')->name('description');
+Route::get('/{district}/{category}/{id}', 'Front\FrontController@listDescription')->name('description');
+Route::get('/listing/{district}/{category}/{slug}', 'Front\FrontController@details')->name('details');
 // Route::post('/search', 'Front\SearchController@index');
 //http://routes.lo/serarch/district/searchresult
 Route::post('/search', 'Front\SearchController@homesearch')->name('homesearch');

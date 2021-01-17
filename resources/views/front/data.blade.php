@@ -1,6 +1,8 @@
 <?php 
-
- $target_url = "https://www.dialus.lk/list/Jaffna/-/atm/C_2";
+for ($i=1; $i <= 9; $i++) { 
+    # code...
+// $target_url = "https://www.dialus.lk/list/Jaffna/-/general-physician/C_198";
+ $target_url = "https://www.dialus.lk/list/Jaffna/-/beauty-parlours/C_14?page=".$i;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target_url);
         // curl_setopt($ch, CURLOPT_POST,1);
@@ -19,115 +21,104 @@
         // print_r($errmsg);
         // print_r($header);
         // print_r($httpCode);
+    }
 ?>
 <button type="submit" id="btn_save">save</button>
 {{-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> --}}
 <script type="text/javascript">
     // $(document).on('click', '#btn_save', function(e) {
-    $(document).ready(function() {
-        // e.preventDefault();
-        // alert();
+     //   e.preventDefault();
+     $(document).ready(function() {
+
         var names = [];
         var phones = [];
         var earphone = [];
         var address = [];
-        var webs = [];
-        var emails = [];
         var areas = [];
+        var emails = [];
+        var morearr = [];
+        var websites = [];
         var name_class = $(".panel-heading");
         var phone_class = $(".glyphicon-phone-alt");
         var earphone_phone_class = $(".glyphicon-earphone");
         var address_class = $(".glyphicon-map-marker");
-        var webclass = $(".glyphicon-globe");
-        var emailclass = $(".glyphicon-envelope");
-        var areaclass = $(".panel-heading .pull-right");
+    
+        $('.item').each(function() {
+            //Phone number detilas
+            $(this).find('.panel-body').find('.glyphicon-phone-alt').parent().filter('span').remove();
+            var phone = $(this).find('.panel-body').find('.glyphicon-phone-alt').parent().text();
+            var remove_space_pho = phone.replace(/\n/ig, '');
+                var final_phone = remove_space_pho == '' ?'null':$.trim(remove_space_pho);
+            phones.push(final_phone);
+        
+            //location
+            var location = $(this).find('.panel-heading').find('.pull-right').text();
+            areas.push(location);
+            $(this).find('.panel-heading').find('.pull-right').remove();
 
-        name_class.each(function() {
-            $(this).contents().filter('span').remove();
-
-            var name = $(this).text();
+            // Name
+            var name = $(this).find('.panel-heading').text();
             var res = name.replace(/\n/ig, '');
-            var result = res == '' ? '1' : res;
+            var result = $.trim(res) == '' ? 'null' : $.trim(res);
             names.push(result);
-        });
-        areaclass.each(function() {
-            $(this).contents().filter('span').remove();
 
-            var area = $(this).text();
-            var res = area.replace(/\n/ig, '');
-            var result = res == '' ? '1' : res;
-            areas.push(result);
-        });
+            // Email address
+            var email_div = $(this).find('.panel-body').find('.glyphicon-envelope').parent().html();
+            if(email_div){
+                var email = email_div.replace('<span class="glyphicon glyphicon-envelope"></span>','');
+                emails.push($.trim(email));
+            }
+            else{
+                emails.push("null");
+            }
+             // more 
+            var more_div = $(this).find('.panel-footer').find('a').parent().html();
+            if(more_div){
+                var more = more_div.replace('<span class="glyphicon glyphicon-share"></span>','');
+                var href = $(more).prop('href');
+                // console.log(href);
+                morearr.push(href);
+            }
+            else{
+                morearr.push("null");
+            }
 
-        // $(".panel-heading").each(function() {
-        //     $(this > areaclass).contents().filter('span').remove();
-        //     var area = $(this).find(areaclass).parent().text();
-        //     var res = area.replace(/\n/ig, '');
-        //     var result = $.trim(res) == '' ? '1' : res;
-        //     areas.push(result);
-        // });
+        
+            // Website 
+            var web_div = $(this).find('.panel-body').find('.glyphicon-globe').parent().html();
+            if(web_div){
+                var website = web_div.replace('<span class="glyphicon glyphicon-globe"></span>','');
+                websites.push($.trim(website));
+            }
+            else{
+                websites.push("null");
+            }
 
-        phone_class.each(function() {
-            $(this).contents().filter('span').remove();
-            var phone = $(this).parent().text();
-            var res = phone.replace(/\n/ig, '');
-            var result = phone == '' ? '1' : res;
-
-            phones.push(result);
-        });
-        webclass.each(function() {
-            $(this).contents().filter('span').remove();
-            var web = $(this).parent().text();
-            var res = web.replace(/\n/ig, '');
-            var result = $.trim(res) == '' ? '1' : res;
-
-            webs.push(result);
-        });
-        emailclass.each(function() {
-            $(this).contents().filter('span').remove();
-            var email = $(this).parent().text();
-            var res = email.replace(/\n/ig, '');
-            var result = $.trim(res) == '' ? '1' : res;
-
-            emails.push(result);
-        });
-        // if ($(".panel-body").hasClass(earphone_phone_class)) {
-        //     earphone_phone_class.each(function() {
-        //         $(this).contents().filter('span').remove();
-        //         var ear = $(this).parent().text();
-        //         var res = ear.replace(/\n/ig, '');
-        //         var result = $.trim(res) == null ? '1' : res;
-
-        //         earphone.push(ear);
-        //     });
-        // }
-
-        $(".panel-body").each(function() {
+            // Another Phone
             $(this > earphone_phone_class).contents().filter('span').remove();
             var ear = $(this).find(earphone_phone_class).parent().text();
             var res = ear.replace(/\n/ig, '');
-            var result = $.trim(res) == '' ? '1' : res;
+            var result = $.trim(res) == '' ? 'null' : res;
             earphone.push(result);
-        });
 
-
-        address_class.each(function() {
-            $(this).contents().filter('span').remove();
-            $(this).parent().contents().filter('div').remove();
-            var add = $(this).parent().text();
-            var res = add.replace(/\n/ig, '');
-            var result = $.trim(res) == '' ? '1' : res;
-
-            address.push(result);
-        });
-
+            // Address Detials
+            var test = $(this).find('.panel-body').find('.glyphicon-map-marker').filter('span').remove();
+            $(this).find('.panel-body').find('.glyphicon-map-marker').filter('div').remove();
+            $(this).find('.panel-body').children().remove();
+            var add = $(this).find('.panel-body').text();
+            var address_res = add.replace(/\n/ig, '');
+            var address_result = $.trim(address_res) == '' ? 'null' : $.trim(address_res);
+            address.push(address_result);
+                
+        });  
         // console.log(names);
         // console.log(areas);
         // console.log(address);
+        // console.log(emails);
         // console.log(phones);
         // console.log(earphone);
-        // console.log(webs);
-        // console.log(emails);
+        // console.log(websites);
+        
         var _token = "{{ csrf_token() }}";
         $.ajax({
             url: "{{ route('savedata') }}",
@@ -137,8 +128,9 @@
                 address:address,
                 phones:phones,
                 earphone:earphone,
-                webs:webs,
+                websites:websites,
                 emails:emails,
+                morearr:morearr,
                 _token:_token
             },
             dataType: 'json',
