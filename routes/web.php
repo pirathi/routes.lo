@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', 'Admin\AdminController@dashboard')->name('admin'); 
     Route::get('/dashboard', 'Admin\AdminController@dashboard');
     Route::post('/getarea', 'Admin\PostController@getarea')->name('getarea');
-    Route::post('/getcategory', 'Admin\PostController@categoryfilter')->name('getcategory');
+    Route::get('/category/{category}', 'Admin\PostController@categoryfilter')->name('categoryfilter');
 });
 
 Route::get('/getdata', 'Front\FrontController@getdata');

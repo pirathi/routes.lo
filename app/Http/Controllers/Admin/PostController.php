@@ -27,15 +27,13 @@ class PostController extends Controller
         return \Response::json($areas);
     }
 
-    public function categoryfilter(Request $request){
-        // return $request->cat_id;
-        $cat_id = $request->cat_id;
-
+    public function categoryfilter($id){
+        // return $id;
         
-        $posts = Listing::where('category',$cat_id)->paginate(20);
-        
+        $posts = Listing::where('category',$id)->paginate(20);
+        $categories = Category::all();
 
-        return \Response::json($posts);
+        return view('admin.post.post', compact('posts','categories'));
     }
     public function index()
     {
@@ -43,7 +41,8 @@ class PostController extends Controller
         $districts = District::all();
         $posts = Listing::paginate(20);
         
-        $categories = Category::pluck('category_name', 'id');
+        $categories = Category::all();
+        //Category::pluck('category_name', 'id');
 
         return view('admin.post.post', compact('districts','posts','categories'));
     }

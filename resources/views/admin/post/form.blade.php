@@ -43,15 +43,15 @@
 {{-- {{ $post }} --}}
 @if(isset($post))
     <div class="form-group row">
-        {!! Form::label('longitude', 'Longitude', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-        <div class="col-md-6">
-            {!! Form::text('longitude', null, ['class' => 'form-control','required' => 'required']) !!}
-        </div>
-    </div>
-    <div class="form-group row">
         {!! Form::label('latitude', 'Latitude ', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
         <div class="col-md-6">
             {!! Form::text('latitude', null, ['class' => 'form-control', 'required' => 'required']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
+        {!! Form::label('longitude', 'Longitude', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+        <div class="col-md-6">
+            {!! Form::text('longitude', null, ['class' => 'form-control','required' => 'required']) !!}
         </div>
     </div>
 @endif
