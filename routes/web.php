@@ -62,4 +62,5 @@ Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchre
 // // Route::get('/{district}/{category}/{id}', 'Front\FrontController@listDescription')->name('description');
 // >>>>>>> main
 
+//pirathi test
 
