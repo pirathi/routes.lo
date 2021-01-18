@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Listing;
 use App\Models\District;
 use App\Models\Category;
+use App\Models\Area;
 
 class SearchController extends Controller
 {
     public function homesearchres($district, $key)
     {
+        return $district;
+        $districtid = District::where('districts_name', $district)->first();
+        // $areaid = Area::where('area_name', $area)->first();
+        $category_id = Category::where('category_name', $key)->first();
+
         $c = Category::select('category_name')
                 ->where('category_name', $key)
                 ->exists();
@@ -22,14 +28,14 @@ class SearchController extends Controller
 
         if ($c) {
             if (!empty($district)) {
-                $q->where('district', $district)
-                ->where('category', $key);
+                $q->where('district', $districtid->id)
+                ->where('category', $category_id->id);
             }
             
         }
         else {
             if (!empty($district) && !empty($key)) {
-                $q->where('district', $district)
+                $q->where('district', $districtid->id)
                 ->where('name', 'like', "%$key%");
             }
         }
@@ -40,18 +46,22 @@ class SearchController extends Controller
 
     public function catsearchres($district, $area, $ke)
     {
+        $districtid = District::where('districts_name', $district)->first();
+        $areaid = Area::where('area_name', $area)->first();
+        
+        $category_id = Category::where('category_name', $ke)->first();
         $q = Listing::query();
         $check = Category::select('category_name')
                 ->where('category_name', $ke)
                 ->exists();
         if ($check) {
-            $q->where('district', $district)
-                ->where('area', $area)
-                ->where('category',  'like', "%$ke%");
+            $q->where('district', $districtid->id)
+                ->where('area', $areaid->id)
+                ->where('category',  $category_id->id);
         }
         else {
-            $q->where('district', $district)
-                ->where('area', $area)
+            $q->where('district', $districtid->id)
+                ->where('area', $areaid->id)
                 ->where('name', 'like', "%$ke%");
         }
                
