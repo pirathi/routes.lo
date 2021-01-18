@@ -99,10 +99,18 @@ class FrontController extends Controller
         return redirect()->route('details',[$district,$category, $slug->slug]);
     }
 
-    public function details($district, $category, $slug)
-    {
-       return $slug;
-    }
+// <<<<<<< route-pirathi
+//         $slug = str_replace(' ', '-', $request->names).'-'.strtolower($request->areas);
+//         $post->slug = $slug;
+//         $post->save();
+
+//         return view('front.data');
+// =======
+//     public function details($district, $category, $slug)
+//     {
+//        return $slug;
+// >>>>>>> main
+//     }
    
     
 }
