@@ -8,8 +8,6 @@
                     <div class="card-header">{{ ('Edit Post') }}</div>
     
                     <div class="card-body">
-                        
-                        {{ $post }}
                         {!! Form::model($post, ['method' => 'PATCH', 'class' => 'form', 'route' => ['post.update', $post->id]]) !!}
                             @include('admin.post.form');
                         {!! Form::close() !!}
