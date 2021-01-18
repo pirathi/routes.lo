@@ -49,13 +49,17 @@ Route::post('getcate', 'Front\PostController@getcategory')->name('front.getcate'
 Route::get('/', 'Front\FrontController@index');
 Route::get('/{district}', 'Front\FrontController@category')->name('category');
 Route::get('/{district}/{category}', 'Front\FrontController@getListing')->name('list');
-Route::get('/{district}/{category}/{id}', 'Front\FrontController@listDescription')->name('description');
 Route::get('/listing/{district}/{category}/{slug}', 'Front\FrontController@details')->name('details');
 // Route::post('/search', 'Front\SearchController@index');
 //http://routes.lo/serarch/district/searchresult
 Route::post('/search', 'Front\SearchController@homesearch')->name('homesearch');
 Route::get('/lists/{district}/{key}', 'Front\SearchController@homesearchres')->name('homesearchres');
 Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchres')->name('catsearchres');
-Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchres')->name('listsearchres');
+// <<<<<<< route-pirathi
+// // Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchres')->name('listsearchres');
+// =======
+// // Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchres')->name('listsearchres');
+// // Route::get('/{district}/{category}/{id}', 'Front\FrontController@listDescription')->name('description');
+// >>>>>>> main
 
 

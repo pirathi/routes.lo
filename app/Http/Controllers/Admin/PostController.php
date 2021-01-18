@@ -132,10 +132,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request->page;
         $post = Listing::find($id);
         $input = $request->all();
         $post->fill($input)->save();
         return redirect('/post');
+        // return redirect::back();
     }
 
     /**
