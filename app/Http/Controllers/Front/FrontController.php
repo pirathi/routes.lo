@@ -26,14 +26,14 @@ class FrontController extends Controller
             $listing = new Listing;
             $areaid= Area::where('area_name', $request->areas[$key])->first();
             $listing->district = 1;
-            $listing->category = 6;
+            $listing->category = 44;
             $listing->phone = $request->phones[$key] ;
             $listing->website = $request->websites[$key] ;
             $listing->address = $request->address[$key] ;
             $listing->email = $request->emails[$key] ;
             $listing->area = $areaid->id;
             $listing->name = $request->names[$key] ;
-            $slug = str_replace(' ', '-', strtolower($request->names[$key])).'-'.strtolower($request->areas[$key]);
+            $slug = str_replace(' ', '-', strtolower($request->names[$key])).'-'.str_replace(' ', '-', strtolower($request->areas[$key]));
             $listing->slug = $slug;
             $listing->description = 'null';
             $listing->tags = str_replace(' ', '_', strtolower($request->names[$key])).'_'.strtolower($request->areas[$key]).', '.str_replace(' ', '_', strtolower($request->names[$key])).', '.strtolower($request->areas[$key]).' contact number, address, location, phone number, mobile number';
@@ -94,23 +94,18 @@ class FrontController extends Controller
     
     public function listDescription($district, $category, $id)
     {
-        $slug = Listing::whereId($id)->first();
-        // return $slug->slug;
-        return redirect()->route('details',[$district,$category, $slug->slug]);
+        $details = Listing::whereId($id)->first();
+        // return $details->slug;
+        $slug = str_replace(" ", "-",$details->slug);
+        // return $slug;
+
+        return redirect()->route('details',[$district,$category, $slug]);
     }
 
-// <<<<<<< route-pirathi
-//         $slug = str_replace(' ', '-', $request->names).'-'.strtolower($request->areas);
-//         $post->slug = $slug;
-//         $post->save();
+    public function details($district, $category, $slug)
+    {
+       return $slug;
 
-//         return view('front.data');
-// =======
-//     public function details($district, $category, $slug)
-//     {
-//        return $slug;
-// >>>>>>> main
-//     }
-   
+    }
     
 }

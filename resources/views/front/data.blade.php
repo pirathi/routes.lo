@@ -1,8 +1,8 @@
 <?php 
-for ($i=1; $i <= 9; $i++) { 
+for ($i=1; $i <= 2; $i++) { 
     # code...
-// $target_url = "https://www.dialus.lk/list/Jaffna/-/general-physician/C_198";
- $target_url = "https://www.dialus.lk/list/Jaffna/-/beauty-parlours/C_14?page=".$i;
+ //$target_url = "https://dialus.lk/list/Jaffna/-/airlines/C_174";
+ $target_url = "https://dialus.lk/list/Jaffna/-/bus-ticketing-agents/C_189?page=".$i;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target_url);
         // curl_setopt($ch, CURLOPT_POST,1);
