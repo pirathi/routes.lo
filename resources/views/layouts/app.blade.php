@@ -40,7 +40,9 @@
         height:60vh;
     }
     #green{
-        background-color:#559065;
+        background-color:#4f946c;
+        background-image: url("{{ asset('images/header_bg.jpeg') }}");
+        background-position: center;
     }
     #blue{
         background-color:#7eb3a7;
@@ -89,7 +91,12 @@
         height: calc(3rem + 2px) !important;
         border-radius:0;
     }
+
+    /* .btnsearch {
+        background-color: #045bbd;
+    } */
     .wrn-btn{
+        background-color: #045bbd;
         width: 100%;
         font-size: 16px;
         font-weight: 400;
@@ -235,6 +242,7 @@ $(document).ready(function() {
                             </div>
                             
                             <h1>Srilanka's No.1 Classified Search Engine</h1>
+                            <h3>Find Your Exact Location and Coordinations</h3>
 
                             <div class="menu">
                                 {{-- <ul class="navbar-nav">
