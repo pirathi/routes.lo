@@ -49,6 +49,7 @@ Route::post('/search', 'Front\SearchController@homesearch')->name('homesearch');
 Route::get('/lists/{district}/{key}', 'Front\SearchController@homesearchres')->name('homesearchres');
 Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchres')->name('catsearchres');
 
+// Route::get('/lists/{district}/{area}/{key}', 'Front\SearchController@catsearchres')->name('listsearchres');
 Route::get('/{district}/{category}/{id}', 'Front\FrontController@listDescription')->name('description');
 
 // Route::get('/', ['as'=>'index','Front\FrontController@listDescription'])->name('description');
