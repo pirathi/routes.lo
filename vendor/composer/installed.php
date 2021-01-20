@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '1667ebebdd589e9c2f0aeb981a205c4d358d4485',
+    'reference' => 'ef89f7ea13a9ead4d67402b4e729d7de81462410',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -374,15 +374,6 @@
       ),
       'reference' => '9f7a229a69d52506914b4bc61bfdb199d90c5547',
     ),
-    'jorenvanhocht/laravel-share' => 
-    array (
-      'pretty_version' => '4.0.0',
-      'version' => '4.0.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'a8f4bd843f2dba8d6c968edb3dadc8f27de09303',
-    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -415,7 +406,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '1667ebebdd589e9c2f0aeb981a205c4d358d4485',
+      'reference' => 'ef89f7ea13a9ead4d67402b4e729d7de81462410',
     ),
     'laravel/nexmo-notification-channel' => 
     array (
@@ -784,8 +775,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0.0',
-        1 => '1.0',
+        0 => '1.0',
+        1 => '1.0.0',
       ),
     ),
     'psr/simple-cache' => 

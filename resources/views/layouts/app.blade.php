@@ -17,13 +17,8 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>  --}}
 
-    {{-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>  --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-
-    {{-- share --}}
-    <script src="{{ asset('js/share.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -42,7 +37,7 @@
 
     .rect{
         width:100%;
-        height:68vh;
+        height:60vh;
     }
     #green{
         background-color:#4f946c;

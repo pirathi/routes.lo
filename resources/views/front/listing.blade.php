@@ -53,11 +53,6 @@
                           @endif
                           
                         </div>
-                        <div id="social-links">
-                            <ul>
-                                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://routes.lo/jaffna/atm/1" class="social-button my-class" id="my-id"><span class="fa fa-facebook-official"></span>sss</a></li>
-                            </ul>
-                        </div>
                         <div class="card-footer border-success">
                             <a target="_blank"  href="https://www.google.com/maps/dir/{{ $list->latitude }},{{ $list->longitude  }}"><span class="fas fa-map-marked-alt"></span> Get Direction</a>
                             <a href="{{ route('description', [$dist, $cat, $list->id]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>
