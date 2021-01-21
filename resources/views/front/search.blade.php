@@ -60,9 +60,6 @@
                       @endif
                       
                     </div>
-                    <ul>
-                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://jorenvanhocht.be" class="social-button " id=""><i class="fab fa-facebook-f"></i></a></li>
-                    </ul>
                     
                     <div class="card-footer border-success">
                         <a target="_blank"  href="https://www.google.com/maps/dir/{{ $list->latitude }},{{ $list->longitude  }}"><span class="fas fa-map-marked-alt"></span> Get Direction</a>
