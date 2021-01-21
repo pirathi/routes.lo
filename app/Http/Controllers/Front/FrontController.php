@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Listing;
 use App\Models\Area;
 
+
 class FrontController extends Controller
 {
     public function __construct() { 
@@ -82,6 +83,8 @@ class FrontController extends Controller
         $districtid = District::where('districts_name', $district)->first();
         
         $category_id = Category::where('category_name', $category)->first();
+
+        
         
         $lists =Listing::where('district', $districtid->id)
             ->where('category', $category_id->id)

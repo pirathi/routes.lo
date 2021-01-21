@@ -37,10 +37,15 @@
                           <span class="float-right">{{ $area->area_name }}</span>
                         </div>
                         <div class="card-body">
-                            {{-- <div class="float-right">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.177184228032!2d80.01070521479151!3d9.665897293080727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afe56aa124547ad%3A0xd9c3a31a9a8705aa!2s476%20Hospital%20Rd%2C%20Jaffna!5e0!3m2!1sen!2slk!4v1608828014233!5m2!1sen!2slk" width="150" height="90" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                            </div> --}}
-                          <div><span class="fas fa-map-marker-alt"></span> <a target="_blank" href="https://www.google.com/maps/place/{{ $list->latitude }},{{ $list->longitude  }}">{{ $list->address }}</a></div>
+                            @if ($list->longitude)
+                                <div><span class="fas fa-map-marker-alt"></span> <a target="_blank" href="https://www.google.com/maps/place/{{ $list->latitude }},{{ $list->longitude  }}">{{ $list->address }}</a></div>
+                            
+                            @else 
+                                <div><span class="fas fa-map-marker-alt"></span>{{ $list->address }}</div>
+                            
+                                
+                            @endif
+                          
                           @if (!empty($list->phone) && ($list->phone != 'null'))
                                <div><span class="fas fa-phone-square-alt"></span> <?php echo preg_replace( '#([^,\s]+)#is', '<a href="tel:$1">$1</a>', $list->phone);  ?></div>
                           @endif
@@ -53,8 +58,14 @@
                           @endif
                           
                         </div>
+<<<<<<< Updated upstream
+=======
+                        
+>>>>>>> Stashed changes
                         <div class="card-footer border-success">
-                            <a target="_blank"  href="https://www.google.com/maps/dir/{{ $list->latitude }},{{ $list->longitude  }}"><span class="fas fa-map-marked-alt"></span> Get Direction</a>
+                            @if ($list->latitude)
+                                <a target="_blank"  href="https://www.google.com/maps/dir/{{ $list->latitude }},{{ $list->longitude  }}"><span class="fas fa-map-marked-alt"></span> Get Direction</a>
+                            @endif
                             <a href="{{ route('description', [$dist, $cat, $list->id]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>
                             <input type="hidden" name="listid" value="{{ $list->id }}">
                         </div>

@@ -1,7 +1,13 @@
 @extends('layouts.app')
 {{-- {{ uc$district->districts_name }}--}}
 @section('content')
-<?php  $dist = request()->segment(2); $city = request()->segment(3);  $cat = request()->segment(4); ?>
+<?php  
+    $dist = request()->segment(2); 
+    $city = request()->segment(3);  
+    $cat = request()->segment(4); 
+    // $city = \App\Models\Area::where($seg3);
+?>
+
 
 <section class="search-sec">
     <div class="container">
@@ -13,7 +19,7 @@
                             {!! Form::text('s_searchkey', ucfirst($cat), ['class' => 'form-control search-slt', 'placeholder'=>'What...?']) !!}
                         </div>
                         <div class="col-lg-5 col-md-4 col-sm-12 p-0">
-                            {!! Form::text('s_city', null, ['class' => 'form-control search-slt', 'placeholder'=>'Type your City in '.ucfirst($dist).'...?']) !!}
+                            {!! Form::text('s_city', $city, ['class' => 'form-control search-slt', 'placeholder'=>'Type your City in '.ucfirst($dist).'...?']) !!}
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-12 p-0">
                             {{ Form::button('serach', ['type' => 'submit', 'class' => 'btn btn-primary wrn-btn']) }}
@@ -54,6 +60,10 @@
                       @endif
                       
                     </div>
+                    <ul>
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http://jorenvanhocht.be" class="social-button " id=""><i class="fab fa-facebook-f"></i></a></li>
+                    </ul>
+                    
                     <div class="card-footer border-success">
                         <a target="_blank"  href="https://www.google.com/maps/dir/{{ $list->latitude }},{{ $list->longitude  }}"><span class="fas fa-map-marked-alt"></span> Get Direction</a>
                         <a href="{{ route('description', [$dist, $cat, $list->slug]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>

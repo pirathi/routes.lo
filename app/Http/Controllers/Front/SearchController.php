@@ -16,7 +16,7 @@ class SearchController extends Controller
 {
     public function homesearchres($district, $key)
     {
-        return $district;
+        // return $district;
         $districtid = District::where('districts_name', $district)->first();
         // $areaid = Area::where('area_name', $area)->first();
         $category_id = Category::where('category_name', $key)->first();
