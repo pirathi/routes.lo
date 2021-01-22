@@ -46,6 +46,7 @@ class SearchController extends Controller
 
     public function catsearchres($district, $area, $ke)
     {
+        // return $area;
         $districtid = District::where('districts_name', $district)->first();
         $areaid = Area::where('area_name', $area)->first();
         

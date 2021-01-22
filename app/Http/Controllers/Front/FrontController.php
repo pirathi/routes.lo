@@ -95,19 +95,20 @@ class FrontController extends Controller
         return view('front.listing', compact('lists'));
     }
     
-    public function listDescription($district, $category, $id)
+    public function listDescription($district, $category, $slug)
     {
-        $details = Listing::whereId($id)->first();
-        // return $details->slug;
-        $slug = str_replace(" ", "-",$details->slug);
         // return $slug;
-
+        // $details = Listing::whereId($id)->first();
+        $details = Listing::where('slug', $slug)->get();
+        // $slug = str_replace(" ", "-",$details->slug);
+        return $details;
+        $this->details($id,$district);
         return redirect()->route('details',[$district,$category, $slug]);
     }
 
-    public function details($district, $category, $slug)
+    public function details($district,  $id)
     {
-       return $slug;
+       return $id;
 
     }
     

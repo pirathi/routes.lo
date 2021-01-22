@@ -39,33 +39,33 @@
                         <div class="card-body">
                             @if ($list->longitude)
                                 <div><span class="fas fa-map-marker-alt"></span> <a target="_blank" href="https://www.google.com/maps/place/{{ $list->latitude }},{{ $list->longitude  }}">{{ $list->address }}</a></div>
-                            
                             @else 
                                 <div><span class="fas fa-map-marker-alt"></span>{{ $list->address }}</div>
-                            
-                                
                             @endif
                           
-                          @if (!empty($list->phone) && ($list->phone != 'null'))
-                               <div><span class="fas fa-phone-square-alt"></span> <?php echo preg_replace( '#([^,\s]+)#is', '<a href="tel:$1">$1</a>', $list->phone);  ?></div>
-                          @endif
-                          @if (!empty($list->email) && ($list->email != 'null'))
-                            <div><span class="fas fa-envelope"></span> {{ $list->email }}</div>
-                          @endif
-                          
-                          @if (!empty($list->website) && ($list->website != 'null'))
-                            <div><span class="fas fa-globe-asia"></span> <a href="//{{ $list->website }}" target="_blank">{{ $list->website }}</a></div>
-                          @endif
-                          
+                            @if (!empty($list->phone) && ($list->phone != 'null'))
+                                <div><span class="fas fa-phone-square-alt"></span> <?php echo preg_replace( '#([^,\s]+)#is', '<a href="tel:$1">$1</a>', $list->phone);  ?></div>
+                            @endif
+                            @if (!empty($list->email) && ($list->email != 'null'))
+                                <div><span class="fas fa-envelope"></span> {{ $list->email }}</div>
+                            @endif
+                            
+                            @if (!empty($list->website) && ($list->website != 'null'))
+                                <div><span class="fas fa-globe-asia"></span> <a href="//{{ $list->website }}" target="_blank">{{ $list->website }}</a></div>
+                            @endif
                         </div>
                         <div class="card-footer border-success">
-                            @if (!empty($list->latitude))
+                            @if ($list->latitude)
                                 <a target="_blank"  href="https://www.google.com/maps/dir/{{ $list->latitude }},{{ $list->longitude  }}"><span class="fas fa-map-marked-alt"></span> Get Direction</a>
                             @endif
-                            <a href="{{ route('description', [$dist, $cat, $list->id]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>
-                            <input type="hidden" name="listid" value="{{ $list->id }}">
+                            <a id="moreDetails" data-id = '{{ $list->id }}' href="{{ route('description', [$dist, $cat, $list->slug]) }}"><span class="float-right"><span class="fas fa-hand-point-right"></span> More Details</span></a>
                         </div>
-                      </div>
+                    </div>
+                {!! Form::open(['method' => 'post', 'class' => 'form' ,'id' => 'det']) !!}
+                    {!! Form::hidden('id', $list->id, ['class' => 'form-control search-slt']) !!}
+                    {!! Form::hidden('dis', $dist, ['class' => 'form-control search-slt']) !!}
+                    {!! Form::hidden('cat', $cat, ['class' => 'form-control search-slt']) !!}
+                {!! Form::close() !!}
                 </div>
             @endforeach
             <div class="col-sm-12">
@@ -77,4 +77,5 @@
             
         </div>
     </div>
+   
 @endsection

@@ -35,10 +35,13 @@
         transition: background-color 1s;
 
     }
-
+    .rect_home{
+        width:100%;
+        height:50vh;
+    }
     .rect{
         width:100%;
-        height:60vh;
+        height:35vh;
     }
     #green{
         background-color:#4f946c;
@@ -78,7 +81,7 @@
     /*search box css start here*/
     .search-sec{
         padding: 2rem;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
     .search-slt{
         display: block;
@@ -115,10 +118,15 @@
     }
 
     @media screen and (max-width: 600px) {
-        /* .rect{
+        .rect{
             width:100%;
-            height:45vh;
-        } */
+            height:30vh;
+        }
+
+        .rect_home{
+            width:100%;
+            height:60vh;
+        }
 
         .logo img {
             width: 300px;
@@ -177,7 +185,7 @@
 
     .logo {
         text-align: center;
-        margin: 25px 0 20px;
+        margin: 5px 0 5px;
     }
 
     .wide-intro span {
@@ -234,29 +242,49 @@ $(document).ready(function() {
                     </ul>
                 </div>
             </nav> --}}
-            <div class="rect" id="green">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12 wide-intro">
-                            <div class="logo">
-                                <a href="/"><img src="{{ asset('images/logo.png') }}" alt="routes.lk" /></a>
-                            </div>
-                            
-                            <h1>Srilanka's No.1 Classified Search Engine</h1>
-                            <h3>Find Your Exact Location and Coordinations</h3>
+            @if(Request::is('/')) 
+                <div class="rect_home" id="green">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 wide-intro">
+                                <div class="logo">
+                                    <a href="/"><img src="{{ asset('images/logo.png') }}" alt="routes.lk" /></a>
+                                </div>
+                                
+                                <h1>Srilanka's No.1 Classified Search Engine</h1>
+                                <h3>Find Your Exact Location and Coordinations</h3>
 
-                            <div class="menu">
-                                {{-- <ul class="navbar-nav">
-                                    <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
-                                    <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
-                                </ul> --}}
-                                <span><a href="/">Home | </a></span><span><a href="{{ route('add_listing.create') }}">Add Listing</a>  | </span> <span>About Us | </span> <span>Contact Us  </span>
+                                <div class="menu">
+                                    {{-- <ul class="navbar-nav">
+                                        <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
+                                        <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
+                                    </ul> --}}
+                                    <span><a href="/">Home | </a></span><span><a href="{{ route('add_listing.create') }}">Add Listing</a>  | </span> <span>About Us | </span> <span>Contact Us  </span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-            </div>
+            @else 
+                <div class="rect" id="green">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 wide-intro">
+                                <div class="logo">
+                                    <a href="/"><img src="{{ asset('images/logo.png') }}" alt="routes.lk" /></a>
+                                </div>
+                                <div class="menu">
+                                    {{-- <ul class="navbar-nav">
+                                        <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
+                                        <li class="nav-item active"><a class="nav-link" href="#">Add Listing</a></li>
+                                    </ul> --}}
+                                    <span><a href="/">Home | </a></span><span><a href="{{ route('add_listing.create') }}">Add Listing</a>  | </span> <span>About Us | </span> <span>Contact Us  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
             
 
         <main class="">
