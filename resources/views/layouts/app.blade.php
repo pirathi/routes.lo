@@ -16,9 +16,10 @@
     {{-- <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> --}}
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>  --}}
-
+    <!-- share -->
+    <script src="{{ asset('js/share.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -76,7 +77,24 @@
         text-decoration: none;
     }
     .list_card {
-        height: 260px;
+        height: 270px;
+    }
+
+    #social-links ul {
+        list-style: none;
+        margin-right: -22px;
+    }
+
+    #social-links .details {
+        list-style: none;
+        display: flex;
+    }
+    #social-links ul li {
+        margin: 0 5px;
+    }
+
+    .fa-2x {
+        font-size: 19px;
     }
     /*search box css start here*/
     .search-sec{
@@ -295,5 +313,29 @@ $(document).ready(function() {
     @stack('script')
 </body>
 
+<script>
+    var popupSize = {
+        width: 780,
+        height: 550
+    };
+
+    $(document).on('click', '#social-links >ul>li> a', function(e){
+
+        var
+            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+
+        var popup = window.open($(this).prop('href'), 'social',
+            'width='+popupSize.width+',height='+popupSize.height+
+            ',left='+verticalPos+',top='+horisontalPos+
+            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+        if (popup) {
+            popup.focus();
+            e.preventDefault();
+        }
+
+    });
+</script>
 
 </html>
