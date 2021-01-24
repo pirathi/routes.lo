@@ -14,9 +14,9 @@ use App\Models\Area;
 
 class SearchController extends Controller
 {
-    public function homesearchres($district, $key)
+    public function homesearchres($district, $area, $key)
     {
-        // return $district;
+        return 'home      '.$district.$area.$key;
         $districtid = District::where('districts_name', $district)->first();
         // $areaid = Area::where('area_name', $area)->first();
         $category_id = Category::where('category_name', $key)->first();
@@ -46,7 +46,7 @@ class SearchController extends Controller
 
     public function catsearchres($district, $area, $ke)
     {
-        // return $area;
+        return $area;
         $districtid = District::where('districts_name', $district)->first();
         $areaid = Area::where('area_name', $area)->first();
         
@@ -73,23 +73,26 @@ class SearchController extends Controller
     public function homesearch(Request $request)
     {
         $district = District::whereId($request->h_district)->first();
-        if ($request->has('h_district') || $request->has('h_district')) {
-            // return $district->districts_name;
-            return redirect()->route('homesearchres',[$district->districts_name, $request->h_search_word]);
+        if ($request->has('h_district') || $request->has('h_search_word')) {
+            return $district->districts_name;
+            return redirect()->route('homesearchres',[$district->districts_name, $request->h_search_word,]);
         }
 
         if ($request->has('c_city') || $request->has('c_search_word')) {
             // return $request->c_city;
-            return redirect()->route('catsearchres',[$request->districthid,$request->c_city, $request->c_search_word]);
+            // return redirect()->route('catsearchres',[$request->districthid,$request->c_city, $request->c_search_word]);
+            return redirect()->route('homesearchres',[$request->districthid,$request->c_city, $request->c_search_word]);
         }
 
         if ($request->has('l_category') || $request->has('l_city') || $request->has('l_search')) {
-            return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
+            // return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
+            return redirect()->route('homesearchres',[$request->districthid,$request->l_city, $request->l_search]);
         }
 
         if ($request->has('s_city') || $request->has('s_searchkey')) {
             // return $request->s_city;
-            return redirect()->route('catsearchres',[$request->districthid,$request->s_city, $request->s_searchkey]);
+            // return redirect()->route('catsearchres',[$request->districthid,$request->s_city, $request->s_searchkey]);
+            return redirect()->route('homesearchres',[$request->districthid,$request->s_city, $request->s_searchkey]);
         }
             // return redirect()->route('catsearchres',[$request->districthid,$request->l_city, $request->l_search]);
         // return $key;

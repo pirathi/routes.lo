@@ -99,16 +99,18 @@ class FrontController extends Controller
     {
         // return $id;
         $details = Listing::whereId($id)->first();
+        $relatedlists = Listing::where('category', $details->category)
+                    ->where('area', $details->area)->paginate(10);
         // return $details;
         // $details = Listing::where('slug', $slug)->get();
         // $slug = str_replace(" ", "-",$details->slug);
-        return view('front.details', compact('details'));
+        return view('front.details', compact('details','relatedlists'));
         
     }
 
-    public function details($district,  $id)
+    public function aboutus()
     {
-       return $id;
+       return view('front.about_us');
 
     }
     

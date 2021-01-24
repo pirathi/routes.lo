@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card mt-3">
                 <div class="card-header">
-                  <h3 class="card-title">{{ $details->name }}</h3>
+                  <h3 class="card-title float-left">{{ $details->name }}</h3>
                 </div>
                 <div class="card-body">
                     <div>
@@ -54,9 +54,17 @@
                    <h5 class="card-title"> Related {{ ucfirst($category->category_name) }} near by {{ $area->area_name }}</h4>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                    {{-- {{ $relatedlists  }} --}}
+                    @foreach ($relatedlists as $list)
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ $list->name }}</li>
+                        </ul>
+                        
+                    @endforeach
+
+                    <div class="float-right mt-3">
+                        {{ $relatedlists->links() }}
+                    </div>
                 </div>
               </div>
         </div>

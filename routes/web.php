@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::resource('/add_listing', 'Front\PostController');
-
+Route::get('/about_us', 'Front\FrontController@aboutus');
 
 
 

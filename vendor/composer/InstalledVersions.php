@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b5b291c14e041f4b714937ccec8662eb2b1a12f6',
+    'reference' => '648749b765b4b0158647b607404c9d6035a51218',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -429,7 +429,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b5b291c14e041f4b714937ccec8662eb2b1a12f6',
+      'reference' => '648749b765b4b0158647b607404c9d6035a51218',
     ),
     'laravel/nexmo-notification-channel' => 
     array (
